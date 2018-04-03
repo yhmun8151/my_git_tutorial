@@ -2,6 +2,8 @@ package jinda.sytes.net.git_tutorial.sample1;
 
 import org.springframework.data.annotation.Id;
 
+import java.util.Date;
+
 
 public class M_User {
 
@@ -10,6 +12,7 @@ public class M_User {
 
     private String firstName;
     private String lastName;
+    private Date date = new Date();
 
     public M_User() {
     }
@@ -21,6 +24,6 @@ public class M_User {
 
     @Override
     public String toString() {
-        return String.format("M_User [id=%s, firstName='%s', lastName='%s']", _id, firstName, lastName);
+        return String.format("[id='%s', firstName='%s', lastName='%s', date='%s']", _id, firstName, lastName, date.getTime());
     }
 }

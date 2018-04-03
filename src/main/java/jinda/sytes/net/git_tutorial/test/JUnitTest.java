@@ -1,27 +1,23 @@
-package jinda.sytes.net.git_tutorial.sample1;
+package jinda.sytes.net.git_tutorial.test;
 
+import jinda.sytes.net.git_tutorial.sample1.M_User;
+import jinda.sytes.net.git_tutorial.sample1.M_UserRepository;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping(value = "/db")
-@CrossOrigin("*")
-public class M_Controller {
+public class JUnitTest {
 
     @Autowired
     private M_UserRepository repository;
 
-
-    @RequestMapping("/test")
-    public String test2() {
+    @Test
+    public void test2() {
         System.out.println("Spring boot Command line is runned....");
-        this.repository.deleteAll();
+        repository.deleteAll();
 
         // save a couple of customers
-        this.repository.save(new M_User("Alice", "Smith"));
-        this.repository.save(new M_User("Bob", "Smith"));
+        repository.save(new M_User("Alice", "Smith"));
+        repository.save(new M_User("Bob", "Smith"));
 
         // fetch all customers
         System.out.println("Customers found with findAll():");
@@ -41,7 +37,6 @@ public class M_Controller {
         for (M_User user : this.repository.findByLastName("Smith")) {
             System.out.println(user);
         }
-
-        return repository.findAll().toString();
     }
+
 }
